@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Votaciones
+		</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="container" style="margin-top: 10px">
+			<a type="button" class="btn btn-warning" href="/registraduria">Salir</a>
+		</div>
+		<div class="container text-center">
+			<h5>VOTE POR SU CANDIDATO FAVORITO
+			</h5>
+			<h1>INFOVOTANTES</h1>
+
+			<div style="margin-top: 30px; margin-bottom: 30px;">
+				<form action="/registraduria/votaciones/show" method="post">
+					<div class="row height d-flex justify-content-center align-items-center ">
+						<div class="col-md-7 ">
+							<div class="search input-group">
+								<i class="fa fa-search"></i>
+								<input type="number" class="form-control" name="cedula" id="cedula" placeholder="Digite la cedula">
+								<button type="submit" class="btn btn-primary" id="btnCed">Buscar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			{% if inscripciones is not empty %}
+				{% if inscripciones.lugarvotacion is not empty %}
+					{% if inscripciones.voto is empty %}
+
+						<div id="votacionesDIV" class="card-deck row row-cols-1 row-cols-md-2 g-4 text-center">
+							<div class="col">
+								<div class="card" style="background-color: #dfdddd;">
+									<svg class="card-img-top" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="150" height="150" viewbox="0 0 50 50" style=" fill:#undefined;">
+										<path d="M 24.875 3.3125 C 20.183594 3.417969 17.214844 5.316406 15.9375 8.25 C 14.722656 11.042969 14.976563 14.5625 15.84375 18.21875 C 15.378906 18.765625 14.996094 19.535156 15.09375 20.6875 L 15.09375 20.75 C 15.261719 21.96875 15.628906 22.828125 16.09375 23.4375 C 16.316406 23.726563 16.632813 23.742188 16.90625 23.90625 C 17.148438 25.269531 17.691406 26.570313 18.3125 27.59375 C 18.34375 27.742188 18.40625 27.878906 18.5 28 C 18.5 28 18.601563 28.128906 18.625 28.15625 C 18.9375 28.625 19.09375 29.277344 19.09375 30 C 19.09375 30.769531 19.082031 31.484375 19 32.28125 C 18.699219 33.039063 17.949219 33.644531 16.75 34.25 C 15.496094 34.882813 13.855469 35.464844 12.1875 36.1875 C 10.519531 36.910156 8.828125 37.777344 7.46875 39.15625 C 6.109375 40.535156 5.136719 42.445313 5 44.9375 L 4.9375 46 L 45.0625 46 L 45 44.9375 C 44.863281 42.445313 43.914063 40.539063 42.5625 39.15625 C 41.210938 37.773438 39.511719 36.910156 37.84375 36.1875 C 36.175781 35.464844 34.523438 34.886719 33.25 34.25 C 32.015625 33.632813 31.242188 33.003906 30.90625 32.21875 C 30.828125 31.273438 30.8125 30.527344 30.8125 29.6875 C 30.8125 29.152344 30.996094 28.667969 31.3125 28.1875 C 31.320313 28.175781 31.335938 28.167969 31.34375 28.15625 C 31.347656 28.148438 31.40625 28.09375 31.40625 28.09375 C 31.53125 27.964844 31.617188 27.800781 31.65625 27.625 C 32.261719 26.585938 32.765625 25.265625 33 23.9375 C 33.3125 23.773438 33.664063 23.753906 33.90625 23.4375 C 34.386719 22.808594 34.667969 21.914063 34.78125 20.6875 C 34.871094 19.628906 34.566406 18.859375 34.09375 18.28125 C 34.613281 16.679688 35.230469 14.117188 35.03125 11.5 C 34.921875 10.0625 34.542969 8.628906 33.6875 7.4375 C 32.914063 6.359375 31.664063 5.621094 30.09375 5.28125 C 29.035156 3.867188 27.113281 3.3125 24.90625 3.3125 Z M 24.90625 5.3125 C 24.917969 5.3125 24.925781 5.3125 24.9375 5.3125 C 26.933594 5.320313 28.210938 5.882813 28.625 6.59375 L 28.875 7.03125 L 29.375 7.09375 C 30.75 7.285156 31.503906 7.816406 32.0625 8.59375 C 32.621094 9.371094 32.941406 10.457031 33.03125 11.65625 C 33.214844 14.058594 32.519531 16.875 32.0625 18.15625 L 31.75 19 L 32.53125 19.40625 C 32.523438 19.433594 32.851563 19.765625 32.8125 20.5 C 32.8125 20.515625 32.8125 20.515625 32.8125 20.53125 C 32.71875 21.472656 32.476563 22.003906 32.3125 22.21875 C 32.144531 22.4375 32.058594 22.40625 32.09375 22.40625 L 31.21875 22.40625 L 31.09375 23.28125 C 30.921875 24.578125 30.261719 26.210938 29.6875 27.03125 L 29.65625 27.03125 C 29.597656 27.117188 29.554688 27.21875 29.5 27.3125 C 29.238281 27.617188 28.84375 28.019531 28.28125 28.5 C 27.347656 29.296875 26.109375 30 25 30 C 23.898438 30 22.648438 29.261719 21.6875 28.4375 C 20.855469 27.722656 20.359375 27.109375 20.21875 26.9375 C 20.214844 26.929688 20.222656 26.914063 20.21875 26.90625 C 19.628906 26.054688 18.953125 24.5625 18.78125 23.28125 L 18.6875 22.40625 L 17.875 22.40625 C 17.839844 22.390625 17.746094 22.339844 17.65625 22.21875 C 17.480469 21.988281 17.230469 21.449219 17.09375 20.53125 C 17.09375 20.511719 17.09375 20.519531 17.09375 20.5 C 17.089844 20.484375 17.097656 20.484375 17.09375 20.46875 C 17.078125 19.710938 17.546875 19.289063 17.46875 19.34375 L 18.03125 18.9375 L 17.875 18.25 C 16.953125 14.605469 16.808594 11.304688 17.78125 9.0625 C 18.753906 6.828125 20.722656 5.414063 24.90625 5.3125 Z M 21.09375 30.53125 C 22.148438 31.308594 23.46875 32 25 32 C 26.5 32 27.785156 31.34375 28.8125 30.59375 C 28.816406 31.203125 28.835938 31.828125 28.90625 32.59375 L 28.90625 32.71875 L 28.96875 32.84375 C 29.144531 33.304688 29.394531 33.695313 29.6875 34.0625 C 29.675781 34.101563 29.664063 34.144531 29.65625 34.1875 C 29.65625 34.1875 29.417969 34.84375 28.71875 35.5625 C 28.019531 36.28125 26.933594 37 25 37 C 23.074219 37 21.949219 36.25 21.21875 35.5 C 20.488281 34.75 20.25 34.0625 20.25 34.0625 C 20.539063 33.6875 20.777344 33.285156 20.9375 32.8125 L 21 32.625 C 21.085938 31.867188 21.09375 31.183594 21.09375 30.53125 Z M 31.25 35.4375 C 31.601563 35.664063 31.964844 35.875 32.34375 36.0625 C 33.804688 36.789063 35.460938 37.351563 37.03125 38.03125 C 38.601563 38.710938 40.066406 39.480469 41.125 40.5625 C 41.96875 41.425781 42.476563 42.574219 42.75 44 L 7.25 44 C 7.523438 42.574219 8.027344 41.425781 8.875 40.5625 C 9.9375 39.480469 11.429688 38.710938 13 38.03125 C 14.570313 37.351563 16.210938 36.792969 17.65625 36.0625 C 18.015625 35.878906 18.382813 35.6875 18.71875 35.46875 C 18.941406 35.871094 19.285156 36.394531 19.78125 36.90625 C 20.800781 37.957031 22.527344 39 25 39 C 27.464844 39 29.15625 37.96875 30.15625 36.9375 C 30.703125 36.375 31.035156 35.851563 31.25 35.4375 Z"></path>
+									</svg>
+									<div class="card-body">
+										<h5 class="card-title">Voto en Blanco</h5>
+									</div>
+									<div class="card-body">
+										<button type="button" onclick="mostrar2()" class="btn btn-primary">Votar</button>
+									</div>
+								</div>
+							</div>
+							{% for cand in cand %}
+								<div class="col">
+									<div class="card" style="background-color: #dfdddd;">
+										<svg class="card-img-top" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="160" height="160" viewbox="0 0 40 40" style=" fill:#undefined;">
+											<path fill="#e8d47b" d="M30.5,26.5c-1.654,0-3-1.346-3-3s1.346-3,3-3c2.49,0,3,0.732,3,1.833 C33.5,24.152,32.045,26.5,30.5,26.5z"></path>
+											<path fill="#ba9b48" d="M30.5,21c2.5,0,2.5,0.739,2.5,1.333C33,23.848,31.707,26,30.5,26c-1.379,0-2.5-1.121-2.5-2.5 S29.121,21,30.5,21 M30.5,20c-1.933,0-3.5,1.567-3.5,3.5c0,1.933,1.567,3.5,3.5,3.5s3.5-2.734,3.5-4.667 C34,20.4,32.433,20,30.5,20L30.5,20z"></path>
+											<path fill="#e8d47b" d="M9.5,26.5c-1.545,0-3-2.348-3-4.167c0-1.101,0.51-1.833,3-1.833c1.654,0,3,1.346,3,3 S11.154,26.5,9.5,26.5z"></path>
+											<path fill="#ba9b48" d="M9.5,21c1.379,0,2.5,1.121,2.5,2.5S10.879,26,9.5,26C8.293,26,7,23.848,7,22.333 C7,21.739,7,21,9.5,21 M9.5,20C7.567,20,6,20.4,6,22.333C6,24.266,7.567,27,9.5,27s3.5-1.567,3.5-3.5C13,21.567,11.433,20,9.5,20 L9.5,20z"></path>
+											<path fill="#ffeea3" d="M20,38.5c-1.268,0-2.446-0.526-3.316-1.483L16.6,36.925l-0.118-0.042 C12.306,35.396,9.5,31.424,9.5,27V12.381c0-2.615,2.127-4.742,4.742-4.742h11.516c2.615,0,4.742,2.127,4.742,4.742V27 c0,4.424-2.806,8.396-6.982,9.883L23.4,36.925l-0.084,0.092C22.446,37.974,21.268,38.5,20,38.5z"></path>
+											<path fill="#ba9b48" d="M25.758,8.139c2.339,0,4.242,1.903,4.242,4.242V27c0,4.213-2.672,7.995-6.65,9.412l-0.236,0.084 l-0.168,0.185C22.172,37.532,21.125,38,20,38s-2.172-0.469-2.946-1.32l-0.168-0.185l-0.236-0.084C12.672,34.995,10,31.213,10,27 V12.381c0-2.339,1.903-4.242,4.242-4.242H25.758 M25.758,7.139H14.242C11.347,7.139,9,9.486,9,12.381V27 c0,4.78,3.055,8.837,7.314,10.354C17.229,38.358,18.534,39,20,39s2.771-0.642,3.686-1.647C27.945,35.837,31,31.78,31,27V12.381 C31,9.486,28.653,7.139,25.758,7.139L25.758,7.139z"></path>
+											<g>
+												<path fill="#b0c1d4" d="M30.5,24.5v-6.69c0-5.667-4.289-7.265-4.332-7.28l-0.323-0.115l-0.225,0.26 c-0.033,0.038-3.373,3.826-9.692,3.826c-4.146,0-6.429,2.102-6.429,5.918V24.5H9.336C8.773,23.099,6.5,17.173,6.5,12.874 C6.5,5.755,12.855,1.5,19,1.5c4.07,0,6.221,2.04,7.14,3.257l0.15,0.198h0.249c1.806,0,6.961,1.52,6.961,8.271 c0,3.381-2.291,9.772-2.847,11.273H30.5z"></path>
+												<path fill="#66798f" d="M19,2c3.854,0,5.878,1.916,6.741,3.058l0.3,0.397h0.498c1.676,0,6.461,1.428,6.461,7.772 c0,2.34-1.141,6.202-2,8.777V17.81c0-6.015-4.473-7.683-4.663-7.751l-0.646-0.227l-0.448,0.515C25.113,10.496,21.997,14,15.928,14 C11.461,14,9,16.279,9,20.418v1.756c-0.856-2.452-2-6.291-2-9.301C7,7.602,11.206,2,19,2 M19,1C10.673,1,6,7.13,6,12.874 C6,17.917,9,25,9,25h1c0,0,0-3.194,0-4.582C10,16.154,12.892,15,15.928,15C22.575,15,26,11,26,11s4,1.43,4,6.81 c0,1.527,0,7.19,0,7.19h1c0,0,3-7.808,3-11.774c0-6.983-5.357-8.772-7.461-8.772C26.007,3.752,23.794,1,19,1L19,1z"></path>
+											</g>
+											<path fill="#36404d" d="M25.5 23A1.5 1.5 0 1 0 25.5 26 1.5 1.5 0 1 0 25.5 23zM14.5 23A1.5 1.5 0 1 0 14.5 26 1.5 1.5 0 1 0 14.5 23z"></path>
+										</svg>
+										<div class="card-body">
+											<h5 name="candidato" class="card-title">{{ cand.nombre }}</h5>
+											<p class="card-text">{{ cand.partidoPolitico }}</p>
+											<button type="button" onclick="mostrar('{{ cand.nombre }}', '{{ cand.partidoPolitico }}')" class="btn btn-primary">Votar</button>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+
+
+						<div class="container" id="formInscrip" style="display:none">
+							<form action="/registraduria/votaciones/save" method="post" class=" row g-3" style=" margin-top: 20px; margin-bottom: 40px;">
+								<div class="col-md-4">
+									<label class="form-label" id="nombre">Cedula</label>
+									<input type="text" class="form-control" id="cedula" name="cedula" value="{{ inscripciones.cedula }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Nombres</label>
+									<input type="text" class="form-control" id="nombres" name="nombres" value="{{ inscripciones.nombres }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Apellidos</label>
+									<input type="text" class="form-control" id="apellidos" name="apellidos" value="{{ inscripciones.apellidos }}" readonly>
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Candidato</label>
+									<input type="text" class="form-control" id="candidato" name="candidato" readonly>
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Partido Politico</label>
+									<input type="String" class="form-control" id="partPolit" name="partPolit" readonly>
+								</div>
+								<div class="col-md-4">
+									<label for="inputDepart" class="form-label">Departamento</label>
+									<input type="text" class="form-control" id="departamento" name="departamento" readonly value="{{ inscripciones.departamentoresidencia }}">
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Pais</label>
+									<input type="text" class="form-control" id="pais" name="pais" value="{{ inscripciones.Pais }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Lugar de Votación</label>
+									<input type="text" class="form-control" id="lugarvotacion" name="lugarvotacion" value="{{ inscripciones.lugarvotacion }}" readonly>
+								</div>
+								<div class="col-12">
+									<button type="button" onclick="volver()" class="btn btn-warning">Cambiar de Candidato</button>
+									<button type="submit" class="btn btn-success">Enviar Voto</button>
+								</div>
+							</form>
+						</div>
+
+
+						<div class="container" id="VotBlanc" style="display:none">
+							<form action="/registraduria/votaciones/save" method="post" class=" row g-3" style=" margin-top: 20px; margin-bottom: 40px;">
+								<div class="col-md-4">
+									<label class="form-label" id="nombre">Cedula</label>
+									<input type="text" class="form-control" id="cedula" name="cedula" value="{{ inscripciones.cedula }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Nombres</label>
+									<input type="text" class="form-control" id="nombre" name="nombres" value="{{ inscripciones.nombres }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Apellidos</label>
+									<input type="text" class="form-control" id="apellidos" name="apellidos" value="{{ inscripciones.apellidos }}" readonly>
+								</div>
+								<div class="col-md-12">
+									<label class="form-label">Candidato</label>
+									<input type="text" class="form-control" id="candidato" name="candidato" value="Voto En Blanco" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Departamento</label>
+									<input type="text" class="form-control" id="departamento" name="departamento" value="{{ inscripciones.departamentoresidencia }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Pais</label>
+									<input type="text" class="form-control" id="pais" name="pais" value="{{ inscripciones.Pais }}" readonly>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Lugar de Votación</label>
+									<input type="text" class="form-control" id="lugVot" name="lugarvotacion" value="{{ inscripciones.lugarvotacion }}" readonly>
+								</div>
+
+								<div class="col-12">
+									<button type="button" onclick="volver()" class="btn btn-warning">Cambiar de Candidato</button>
+									<button type="submit" class="btn btn-success">Enviar Voto</button>
+								</div>
+							</form>
+						</div>
+					{% else %}
+						<div class="container text-center" style="margin-top: 100px">
+							<h1>La cedula digitada ya voto
+							</h1>
+						</div>
+					{% endif %}
+				{% else %}
+					<div class="container text-center" style="margin-top: 100px">
+						<h1>La cedula digitada no se encuentra inscrita a ningun lugar de votación
+						</h1>
+					</div>
+				{% endif %}
+			{% else %}
+				<div class="container text-center" style="margin-top: 100px">
+					<h1>Cedula no encontrada, porfavor intente denuevo.</h1>
+				</div>
+			{% endif %}
+		</div>
+	</body>
+</html></body></html></body></html></body></html></body></html></body> </html></div></body><script>window.onload = function () {
+var currentTime = new Date();
+var hora = currentTime.getHours();
+var fecha = currentTime.toLocaleDateString();
+var not = "No puede entrar"
+
+if (fecha == "17/6/2022" && (hora >= 8 && hora <= 20)) {
+console.log("Paso")
+} else {
+// alert(not)
+// window.location.assign("/registraduria")
+}
+}
+
+function volver() {
+document.getElementById("formInscrip").style = "display:none";
+document.getElementById("votacionesDIV").removeAttribute("style");
+document.getElementById("VotBlanc").style = "display:none";
+}
+
+function mostrar(nom, part) {
+document.getElementById("votacionesDIV").style = "display:none";
+document.getElementById("candidato").value = nom;
+document.getElementById("partPolit").value = part;
+document.getElementById("formInscrip").removeAttribute("style");
+}
+
+function mostrar2() {
+document.getElementById("votacionesDIV").style = "display:none";
+document.getElementById("VotBlanc").removeAttribute("style");
+}</script><script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script></html></body></html></body></html></body></html>

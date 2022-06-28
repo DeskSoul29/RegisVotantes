@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.card-deck{
+  padding-top: 100px;
+}
+
+.votacionesDIV{
+  margin-top: 30px; 
+  margin-bottom: 30px;
+}

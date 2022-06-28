@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Informes
+		</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="container" style="margin-top: 10px">
+			<a type="button" class="btn btn-warning" href="/registraduria">Salir</a>
+		</div>
+		<div class="container text-center">
+			<h5>Bienvenido
+			</h5>
+			<h1>INFOVOTANTES</h1>
+			<h5>Informes de las Votaciones</h5>
+		</div>
+
+		<div class="container accordion" id="accordionExample" style="margin-top: 30px;">
+
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="headingOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						Número de votos por candidato en cada departamento Colombiano
+					</button>
+				</h2>
+				<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Candidato</th>
+									<th scope="col">Departamento</th>
+									<th scope="col">Votos</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for product1 in product %}
+									<tr>
+										<td>{{ product1._id.candidato }}</td>
+										<td>{{ product1._id.departamento }}</td>
+										<td>{{ product1.total }}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingTwo">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					Número de votos en el exterior por país y por Candidato
+				</button>
+			</h2>
+			<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Candidato</th>
+								<th scope="col">Pais</th>
+								<th scope="col">Votos</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for product2 in product2 %}
+								<tr>
+									<td>{{ product2._id.candidato }}</td>
+									<td>{{ product2._id.pais }}</td>
+									<td>{{ product2.total }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingThree">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					Departamentos donde un candidato obtuvo más votación que en Cundinamarca</button>
+			</h2>
+			<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Candidato</th>
+								<th scope="col">Departamento</th>
+								<th scope="col">Votos</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for product1 in product %}
+								{% for product3 in product3 %}
+									{% if product1.total > product3.total and product1._id.departamento != "Cundinamarca" and product1._id.candidato == product3._id.candidato %}
+										<tr>
+											<td>
+												{{ product1._id.candidato }}
+											</td>
+											<td>
+												{{ product1._id.departamento }}
+											</td>
+											<td>
+												{{ product1.total }}
+											</td>
+										</tr>
+									{% endif %}
+								{% endfor %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingFour">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Departamentos donde se obtuvo la mayor y la menor votación por candidato</button>
+			</h2>
+			<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Candidato</th>
+								<th scope="col">Mayor</th>
+								<th scope="col">Menor</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for candidato in product4 %}
+								<tr>
+									<td>{{ candidato._id.candidato }}</td>
+
+									{% set break = false %}
+									{% for mayor in product4_1 if not break%}
+										{% if candidato._id.candidato == mayor._id.candidato%}
+											<td>{{ mayor._id.departamento }}</td>
+											{% set break = true %}
+										{% endif %}
+
+									{% endfor %}
+
+									{% set break = false %}
+									{% for menor in product4_2 if not break %}
+										{% if candidato._id.candidato == menor._id.candidato %}
+											<td>{{ menor._id.departamento }}</td>
+											{% set break = true %}
+										{% endif %}
+
+									{% endfor %}
+
+								</tr>
+							{% endfor %}
+						</tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html></div><div class="accordion-item">
+<h2 class="accordion-header" id="headingFive">
+	<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Número de votos en blanco y abstención por departamento</button>
+</h2>
+<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+	<div class="accordion-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Candidato</th>
+					<th scope="col">Departamento</th>
+					<th scope="col">Votos</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for productBlanc in product5 %}
+					<tr>
+						<td>{{ productBlanc._id.candidato }}</td>
+						<td>{{ productBlanc._id.departamento }}</td>
+						<td>{{ productBlanc.total }}</td>
+					</tr>
+				{% endfor %}
+				{% for productAbs in product5_1 %}
+					<tr>
+						<td>Abstención</td>
+						<td>{{ productAbs._id.departamento }}</td>
+						<td>{{ productAbs.total }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div></div></body></html></div></body></html><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script></html>

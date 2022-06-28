@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			InfoVotantes
+		</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	</head>
+
+	<body>
+		<div class="container text-center">
+			<h1 style="margin-top:30px">VOTACIÓN REALIZADA CON EXITO
+			</h1>
+			<h5>Verifique sus datos</h5>
+
+			<div class="container" id="formInscrip">
+				<div class=" row g-3" style=" margin-top: 20px; margin-bottom: 40px;">
+					<div class="col-md-6">
+						<label for="inputCedu" class="form-label">Cedula</label>
+						<input type="number" class="form-control" name="cedula" disabled value="{{ info.cedula }}">
+					</div>
+					<div class="col-md-6">
+						<label for="inputNaci" class="form-label">Fecha de Nacimiento</label>
+						<input type="String" class="form-control" name="fechanacimiento" disabled value="{{ info.fechanacimiento|date("m/d/Y") }}">
+					</div>
+					<div class="col-md-6">
+						<label for="inputName" class="form-label">Nombres</label>
+						<input type="text" class="form-control" name="nombres" disabled value="{{ info.nombres }}">
+					</div>
+					<div class="col-md-6">
+						<label for="inputApe" class="form-label">Apellidos</label>
+						<input type="text" class="form-control" name="apellidos" disabled value="{{ info.apellidos }}">
+					</div>
+					<div class="col-md-6">
+						<label for="inputNaciMun" class="form-label">Candidato</label>
+						<input type="text" class="form-control" name="municipionacimiento" disabled value="{{ info.candidato }}">
+					</div>
+					<div class="col-md-6">
+						<label for="inputCity" class="form-label">Partido Politico</label>
+						<input type="text" class="form-control" name="municipioresidencia" disabled value="{{ info.partPolit }}">
+					</div>
+					<div class="col-md-4">
+						<label for="inputPais" class="form-label">Pais</label>
+						<input type="text" class="form-control" name="Pais" disabled value="{{ info.pais }}">
+					</div>
+					<div class="col-md-4">
+						<label for="inputPais" class="form-label">Departamento</label>
+						<input type="text" class="form-control" name="departamento" disabled value="{{ info.departamento }}">
+					</div>
+					<div class="col-md-4">
+						<label for="inputVot" class="form-label">Lugar de Votacion</label>
+						<input type="text" class="form-control" name="lugVot" disabled value="{{ info.lugarvotacion }}">
+					</div>
+				</div>
+				<div class="col-12">
+					<a type="button" class="btn btn-warning" href="/registraduria">Salir</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html></body></html><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script></html>
